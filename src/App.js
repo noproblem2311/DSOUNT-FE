@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from 'react-router-dom';
+import RecordList from './components/record/RecordList'; // Component hiển thị danh sách video
+import RecordDetail from './components/record/RecordDetail'; // Component hiển thị chi tiết video
+import MainLayout from './components/layout/MainLayout'; // Component layout chính
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+   
+      <MainLayout> {/* MainLayout bây giờ bọc quanh các Routes */}
+        <Routes>
+          <Route path="/records/" element={<RecordList />} />
+          <Route path="/record/:id" element={<RecordDetail />} />
+          {/* Thêm các Route khác nếu cần */}
+        </Routes>
+      </MainLayout>
+    </Router>
   );
 }
 
